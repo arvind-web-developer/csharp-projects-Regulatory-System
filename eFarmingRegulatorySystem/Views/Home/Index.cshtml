@@ -1,0 +1,75 @@
+﻿@{
+    //ViewBag.Title = "efarming";
+    ViewBag.Title = "खेती";
+
+    ViewBag.Flowchart = "How It works";
+    //ViewBag.Flowchart = "खेती नियामक प्रणाली कैसे काम करता है";
+    //Layout = "MyLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-3 margin-top-20">
+        <a href="@Url.Action("Details", "Person")" class="btn btn-primary btn-large btn-block"><span class="glyphicon glyphicon-user"></span> Member (सदस्य)</a>
+        <a href="@Url.Action("Supervision", "Regulate", new {personId = ViewBag.PersonId})" class="btn btn-primary btn-large btn-block"><span class="glyphicon glyphicon-eye-open"></span> Regulate (विनियमित)</a>
+        <a href="#" class="btn btn-primary btn-large btn-block"><span class="glyphicon glyphicon-circle-arrow-down"></span> Expense (खर्च)</a>
+        <a href="#" class="btn btn-primary btn-large btn-block"><span class="glyphicon glyphicon-link"></span> Equipment (उपकरण)</a>
+    </div>
+    <div class="col-md-2 margin-top-20">
+        <a href="@Url.Action("Details", "Plot")" class="btn btn-primary btn-large btn-block"><span class="glyphicon glyphicon-th"></span> Plot (भूखंड)</a>
+        <a href="#" class="btn btn-primary btn-large btn-block"><span class="glyphicon glyphicon-text-height"></span> Pillar (खंभा)</a>
+    </div>
+    <div class="col-md-2 margin-top-20">
+        <a href="#" class="btn btn-primary btn-large btn-block"><span class="glyphicon glyphicon-tree-conifer"></span> Tree (पेड़)</a>
+        <a href="#" class="btn btn-primary btn-large btn-block"><span class="glyphicon glyphicon-certificate"></span> Fruit (फल)</a>
+        <a href="#" class="btn btn-primary btn-large btn-block"><span class="glyphicon glyphicon-leaf"></span> Crop (फ़सल)</a>
+        <a href="#" class="btn btn-primary btn-large btn-block"><span class="glyphicon glyphicon-retweet"></span> Plantation (उपज)</a>
+    </div>
+    <div class="col-md-2 margin-top-20">
+        <a href="#" class="btn btn-primary btn-large btn-block"><span class="glyphicon glyphicon-cloud-upload"></span> Material (माल)</a>
+        <a href="#" class="btn btn-primary btn-large btn-block"><span class="glyphicon glyphicon-cloud-download"></span> Product (उत्पाद)</a>
+    </div>
+    <div class="col-md-3 margin-top-20">
+        <a href="@Url.Action("ReportsInvestment", "Investment")" class="btn btn-primary btn-large btn-block"><span class="glyphicon glyphicon-circle-arrow-up"></span> Investment (पूंजी निवेश)</a>
+        <a href="#" class="btn btn-primary btn-large btn-block impediment"><span class="glyphicon glyphicon-thumbs-down"></span> Impediment (अड़चन)</a>
+        <a href="#" class="btn btn-primary btn-large btn-block"><span class="glyphicon glyphicon-list"></span> Newsletter (संदेश पत्र)</a>
+        <a href="#" class="btn btn-primary btn-large btn-block"><span class="glyphicon glyphicon-print"></span> Print Report (प्रिंट रिपोर्ट)</a>
+    </div>
+</div>
+<hr />
+<h2>@ViewBag.Flowchart</h2>
+<div class=”row”>
+    <div class=”col-md-12”>
+        <img src="~/Content/Images/flowchart.jpg" class="img-responsive center-block" />
+    </div>
+</div>
+@*
+     You are using @Request.Browser.Browser, and that's OK! Email us at arvind.vitalrevolution@gmail.com if you have any problems. Or send us a tweet @@efarming.
+
+    @{var amounts = new List<Decimal> { 100, 25.50m, -40, 275.99m };
+    }
+
+    <ul>
+        @foreach (decimal amount in amounts)
+        {
+            <li>@formatAmount(amount)</li>
+            <text>plain text</text>
+            @:plain text
+            }
+    </ul>
+
+
+    @helper formatAmount(decimal amount)
+    {
+        var color = "green";
+        if (amount < 0)
+        {
+            color = "red";
+        }
+        <span style="color:@color">@String.Format("{0:c}", amount)</span>
+    }
+
+*@
+
+@section scripts {
+    <script>var testing = true;</script>
+}

@@ -1,0 +1,54 @@
+﻿@model eFarmingRegulatorySystem.Models.Plot
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="row">
+    <div class="col-md-4 col-md-offset-3">
+        <h4>Plot</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.PlotNo)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PlotNo)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PlotArea)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PlotArea)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PlotMapPicture)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PlotMapPicture)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PlotActualPicture)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PlotActualPicture)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Comment)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Comment)
+            </dd>
+
+        </dl>
+    </div>
+</div>

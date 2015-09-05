@@ -1,0 +1,115 @@
+﻿@{
+    ViewBag.Title = "Contact";
+    ViewBag.Message = "Having more questions?";
+}
+<h2>@ViewBag.Title.</h2>
+
+<div class="row" id="formSection">
+    <form role="form" method="post" id="contactForm">
+        <fieldset>
+            <legend>@ViewBag.TheMessage</legend>
+            <div class="form-group">
+                <label for="name" class="col-sm-2">Your name</label>
+                <div class="col-sm-10">
+                    <input type="text" name="name" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="producttype" class="control-label">What kind of product are you interested in?</label>
+                <select name="producttype" size="1" class="form-control">
+                    <option selected>Select one...</option>
+                    <option value="ret">Tree</option>
+                    <option value="who">Fruit</option>
+                    <option value="ind">Vegetable</option>
+                    <option value="sup">Crop</option>
+                    <option value="sup">Pillar</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Would you prefer a email response, sms or a phone call?</label>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="response" value="email">
+                        Email
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="response" value="sms">
+                        SMS
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="response" value="phonecall">
+                        Phone call
+                    </label>
+                </div>
+            </div>
+            <div class="form-group" id="phone">
+                <label for="phone" class="col-sm-2 phone">Contact #</label>
+                <div class="col-sm-10">
+                    <input type="text" name="phone" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="purchasedby" class="control-label">Your are a supplier or customer?</label>
+                <select name="purchasedby" size="1" class="form-control">
+                    <option selected>Select one...</option>
+                    <option value="ret">Retail Customer</option>
+                    <option value="who">Wholesale Customer</option>
+                    <option value="ind">Individual Customer</option>
+                    <option value="sup">Supplier</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="message" class="control-label">Message:</label>
+                <textarea name="message" id="message" class="form-control" rows="3" data-bind="value:message, valueUpdate:'input'" data-toggle="tooltip" title="We welcome your feedback!" data-placement="bottom"></textarea>
+                <span data-bind="text:charactersRemaining"></span> characters remaining
+                <img style="display:none;" id="progress" src="~/Content/images/progress.gif" />
+            </div>
+            <label for="subscribe" class="checkbox-inline">
+                <input name="subscribe" type="checkbox" value="subscribe" data-toggle="collapse" data-target="#email">
+                Subscribe me to the newsletter
+            </label>
+            <div class="form-group collapse in" id="email">
+                <label for="email" class="col-sm-2">Your email</label>
+                <div class="col-sm-10">
+                    <input type="text" name="email" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </fieldset>
+    </form>
+
+</div>
+
+
+@section scripts {
+    <script src="~/Scripts/knockout-3.2.0.js"></script>
+    <script>
+        function ContactViewModel() {
+            var self = this;
+            self.message = ko.observable('');
+            self.charactersRemaining = ko.computed(function () { return 150 - self.message().length; })
+        }
+
+        ko.applyBindings(new ContactViewModel());
+    </script>
+    <script>
+        $('#contactForm').submit(function () {
+            $('#progress').show();
+            $.post('', { message: $('#message').val() })
+                .done(function (response) {
+                    setTimeout(function () { $('#formSection').html(response); }, 2000);
+                });
+            return false;
+        });
+    </script>
+    <script>
+        $("textarea").tooltip();
+        $(".form-group.collapse").collapse();
+    </script>
+}
